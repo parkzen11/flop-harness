@@ -64,14 +64,14 @@ describe.skipIf(!unitPresent(ID))(ID, () => {
       signer,
       amount: "1",
       spec,
-      taskId: "A!B",
+      taskId: "a!b",
       nowMs: NOW,
       claimMin: 5,
       refundMin: 6,
       expireMin: 1,
     });
-    expect(out.specNote.ns).toBe("tclk-job-00");
-    expect(out.specNote.key).toBe("B");
-    expect(out.offer.job?.context).toBe(`${"x".repeat(300)} | full spec: /kv/tclk-job-00/B`);
+    expect(out.specNote.ns).toBe("tclk-job-0b");
+    expect(out.specNote.key).toBe("ab");
+    expect(out.offer.job?.context).toBe(`${"x".repeat(300)} | full spec: /kv/tclk-job-0b/ab`);
   });
 });
