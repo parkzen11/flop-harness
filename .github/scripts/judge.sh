@@ -63,8 +63,12 @@ if [ "${#TOUCHED[@]}" -eq 0 ]; then fail "patch touches no files or is not a uni
 
 for path in "${TOUCHED[@]}"; do
   case "$path" in
-    .github/*|package.json|pnpm-lock.yaml|vendor/*|test/*|units/*|.github)
+    .github/*|package.json|pnpm-lock.yaml|vendor/*|.github)
       fail "patch touches a protected path: $path" ;;
+    test/*|units/*)
+      # test and unit files are protected unless the unit itself lists them (QA units write tests)
+      listed="no"; for allowed in "${ALLOWED[@]}"; do [ "$path" = "$allowed" ] && listed="yes"; done
+      [ "$listed" = "yes" ] || fail "patch touches a protected path not listed by the unit: $path" ;;
   esac
   ok="no"
   for allowed in "${ALLOWED[@]}"; do [ "$path" = "$allowed" ] && ok="yes"; done
