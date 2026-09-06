@@ -9,6 +9,8 @@ reference library `@flop-labs/tclk` is vendored under its Apache-2.0 license
 (`vendor/tclk`, commit in `vendor/tclk/COMMIT`). If Flop Labs objects to the name, the
 repository renames and nothing else changes.
 
+**Want to build it?** Read [PARTICIPATE.md](PARTICIPATE.md): the bar, one unit start to finish, the rules. Scoreboard: https://flop-market.pages.dev/harness/
+
 ## Status
 
 Scaffold. The foundation modules are built and tested here (`identity`, `venue`, `rails`,
