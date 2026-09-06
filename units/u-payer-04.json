@@ -1,0 +1,12 @@
+{
+  "id": "u-payer-04",
+  "module": "payer",
+  "title": "Wait for the reveal, collect the deliverable, receipt or refund",
+  "tier": 4,
+  "spec": "Add src/payer/settle.ts: settle({ state, ref, surface, feeder, rail, notes, postDeal, judge? }). Subscribe for a reveal naming the contract while collecting non-frame lines from the payee (deal room) or contract-tagged lines in the deliveries room (board surface). On reveal: applyFrame; if ok post a receipt { outcome: \"claimed\", rail, ref } and move the state note to claimed. On no reveal by refundAfterMs: post a refund frame with reason, call rail.refund(ref). Return { status: claimed|refunded|bad-reveal, deliverables, payee, contract }.",
+  "done": "Recorded reveal and ghost scenarios end in claimed with the deliverable text and in refunded with a refund frame.",
+  "files": ["src/payer/settle.ts"],
+  "public_test": "test/units/u-payer-04.public.test.ts",
+  "max_lines": 200,
+  "depends_on": ["u-payer-03"]
+}

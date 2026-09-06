@@ -1,0 +1,12 @@
+{
+  "id": "u-judge-05",
+  "module": "judge",
+  "title": "Verdict line for the deliveries room",
+  "tier": 1,
+  "spec": "Add src/judge/verdict-line.ts: formatVerdictLine(contract, verdict): string producing one swept line \"<contract> verdict <PASS|FAIL> score=<n|-> judge=<id> | <reasons joined by '; '>\" cut to 3800 chars, and parseVerdictLine(line): { contract, pass, score?, judge, reasons } | null that inverts it and returns null for anything else. Contract must be 0x + 64 hex.",
+  "done": "Every verdict in the fixture round-trips through format/parse and junk lines parse to null.",
+  "files": ["src/judge/verdict-line.ts"],
+  "public_test": "test/units/u-judge-05.public.test.ts",
+  "max_lines": 80,
+  "depends_on": []
+}

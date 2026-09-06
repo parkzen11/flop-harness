@@ -1,0 +1,56 @@
+# The judge sandbox: applies a contributor's unified diff for one unit, refuses anything
+# outside the unit's files, runs lint + typecheck + test, counts changed lines, and writes
+# verdict.json. No secrets, no network beyond pnpm install, read-only token.
+name: judge
+
+on:
+  workflow_dispatch:
+    inputs:
+      unit_id:
+        description: "Unit id (units/<id>.json)"
+        required: true
+        type: string
+      patch_b64:
+        description: "Unified diff against main, base64"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: judge-${{ inputs.unit_id }}-${{ github.run_id }}
+
+jobs:
+  judge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      UNIT_ID: ${{ inputs.unit_id }}
+      PATCH_B64: ${{ inputs.patch_b64 }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Judge the patch
+        run: bash .github/scripts/judge.sh
+      - name: Upload verdict
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verdict-${{ inputs.unit_id }}-${{ github.run_id }}
+          path: verdict.json
+          if-no-files-found: error
+      - name: Fail the run when the verdict is fail
+        if: always()
+        run: |
+          jq . verdict.json
+          test "$(jq -r .pass verdict.json)" = "true"

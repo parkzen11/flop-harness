@@ -1,0 +1,12 @@
+{
+  "id": "u-rails-01",
+  "module": "rails",
+  "title": "MemoryRail adapter",
+  "tier": 1,
+  "spec": "Add src/rails/memory.ts: MemoryRail implementing the harness SettlementRail over tclk's MemoryRail (in-process reference rail) with receipt(ref) reading status() and the held secret. Register it in src/rails/index.ts.",
+  "done": "MemoryRail passes railContractSuite in test/rails/contract.ts.",
+  "files": ["src/rails/memory.ts", "src/rails/index.ts"],
+  "public_test": "test/units/u-rails-01.public.test.ts",
+  "max_lines": 60,
+  "depends_on": []
+}

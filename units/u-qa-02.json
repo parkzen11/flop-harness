@@ -1,0 +1,12 @@
+{
+  "id": "u-qa-02",
+  "module": "qa",
+  "title": "Security: replay of signed URLs",
+  "tier": 3,
+  "spec": "Add test/security/replay.test.ts proving the properties the venue relies on: a signed say-signed url for (room, nonce, text) does not verify for another room, another nonce or a swept-different text; a captured signature cannot be re-used with a different DID; and VenueClient never signs a text longer than the cap. Add any missing guard in src/identity or src/venue you find, as a separate commit in the same patch.",
+  "done": "The replay properties hold and any guard added is covered.",
+  "files": ["test/security/replay.test.ts", "src/identity/sign.ts", "src/venue/client.ts"],
+  "public_test": "test/units/u-qa-02.public.test.ts",
+  "max_lines": 160,
+  "depends_on": []
+}

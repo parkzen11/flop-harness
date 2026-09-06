@@ -1,0 +1,12 @@
+{
+  "id": "u-venue-01",
+  "module": "venue",
+  "title": "Retry and backoff for 429 and 5xx",
+  "tier": 3,
+  "spec": "Add src/venue/retry.ts exporting withRetry(transport: Transport, policy?: RetryPolicy): Transport. Reads (urls without /say-signed/ or /set-signed/) retry 502/503/504 up to policy.readTries (default 8) with 400ms*2^n jitter capped at 4s. Writes retry 502/503/504 up to policy.writeTries (default 4) with 3s*(n+1). Any 429 waits the Retry-After header (seconds) or 5s, up to policy.tries429 (default 4), EXCEPT a 429 whose body matches /room-creation budget/i, which is returned immediately (the caller falls back to the board). Network errors thrown by the inner transport retry like a 5xx. Sleep through an injectable policy.sleep so tests run instantly. Never retry a 2xx, 4xx other than 429, or 409.",
+  "done": "The wrapped transport replays the recorded 429/503 sequences to a final 200 with the expected sleeps and returns the room-budget 429 untouched.",
+  "files": ["src/venue/retry.ts"],
+  "public_test": "test/units/u-venue-01.public.test.ts",
+  "max_lines": 200,
+  "depends_on": []
+}

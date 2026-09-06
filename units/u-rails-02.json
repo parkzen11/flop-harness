@@ -1,0 +1,12 @@
+{
+  "id": "u-rails-02",
+  "module": "rails",
+  "title": "Rail registry and selection",
+  "tier": 2,
+  "spec": "Add src/rails/registry.ts: RailRegistry with register(rail), get(id), and select(offerRails: string[], preferred?: string[]) returning the first implemented rail both sides support (normalize ids with tclk normalizeRailIds; stubs count as NOT implemented — detect via a static `implemented = false` you add to the stub classes). Unknown ids throw, like tclk does.",
+  "done": "select() picks paper over stubs, honours preference order, and throws on unknown rail ids.",
+  "files": ["src/rails/registry.ts", "src/rails/flop-htlc.ts", "src/rails/x402.ts"],
+  "public_test": "test/units/u-rails-02.public.test.ts",
+  "max_lines": 100,
+  "depends_on": ["u-rails-01"]
+}

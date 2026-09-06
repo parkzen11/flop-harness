@@ -1,0 +1,12 @@
+{
+  "id": "u-payee-01",
+  "module": "payee",
+  "title": "Open payer offers filter",
+  "tier": 2,
+  "spec": "Add src/payee/open-offers.ts: openPayerOffers(frames, nowMs, opts): DecodedFrame[] where DecodedFrame = { seq, ts, frame, verified }. Keep offers that are verified, type offer, role payer, lock hash, not from opts.selfDid, not expired (expiresMs > nowMs), share a rail with opts.rails (default [\"paper\"]), pass tclk validateDeadlines(offer, nowMs, opts.minClaimMs ?? 5 min, opts.minGapMs ?? 60 s), are not in opts.lockedOffers, and have no accept from a DID outside opts.ignoreAccepts unless opts.allowAccepted(offer.from) is true.",
+  "done": "The public frames fixture yields exactly the expected offer ids for each option combination.",
+  "files": ["src/payee/open-offers.ts", "src/payee/types.ts"],
+  "public_test": "test/units/u-payee-01.public.test.ts",
+  "max_lines": 140,
+  "depends_on": []
+}

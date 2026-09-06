@@ -1,0 +1,12 @@
+{
+  "id": "u-archive-01",
+  "module": "archive",
+  "title": "tclk-portfolio/1 manifest schema",
+  "tier": 2,
+  "spec": "Add src/archive/manifest.ts: zod schemas for the tclk-portfolio/1 shape the fleet publishes: Portfolio { v: \"tclk-portfolio/1\", did, generatedAt, deals: Deal[] } and Deal { contract, offerId, role, counterparty, asset, amount, rail, status, rooms: string[], exports: { path, sha256 }[] }. Export parsePortfolio(unknown) and a digest(portfolio) = sha256 of canonical JSON (tclk canonicalJson) so two publishers can compare.",
+  "done": "The sample portfolio parses, a mutated field fails, and digest() is stable across key order.",
+  "files": ["src/archive/manifest.ts"],
+  "public_test": "test/units/u-archive-01.public.test.ts",
+  "max_lines": 120,
+  "depends_on": []
+}

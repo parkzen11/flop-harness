@@ -1,0 +1,12 @@
+{
+  "id": "u-cli-04",
+  "module": "cli",
+  "title": "serve daemon",
+  "tier": 4,
+  "spec": "Add src/cli/commands/serve.ts: `flop-harness serve <key> [--payee-concurrency n] [--payer-per-day n]` running the payee loop and jittered payer offers from a tasks.jsonl catalog, with a liveness watchdog (exit 3 when no loop progress for 10 min) and SIGTERM drain that caps every wait at 60 s. Knobs are re-read from <home>/.env every minute. Wire into main.ts.",
+  "done": "A scripted run with fake timers accepts one offer, posts one offer, and drains cleanly on SIGTERM.",
+  "files": ["src/cli/commands/serve.ts", "src/cli/main.ts"],
+  "public_test": "test/units/u-cli-04.public.test.ts",
+  "max_lines": 260,
+  "depends_on": ["u-cli-03", "u-payer-05"]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "u-payee-06",
+  "module": "payee",
+  "title": "Room grab by heartbeat with board fallback",
+  "tier": 3,
+  "spec": "Add src/payee/room-grab.ts: grabRoom({ room, contract, signer, post, budget: RoomBudget, sleep, maxAttempts, untilMs, stop }) tries to create the derived deal room by posting a heartbeat frame (makeHeartbeat) there, retrying on room-cap errors with 2.5–5 s jittered sleeps while the budget allows, stopping at untilMs or when stop() is true. Returns true when the room exists. Add postDeal(room, frame) that tries the deal room and falls back to the board (OFFER_ROOM) when the cap holds, returning which surface took it.",
+  "done": "Fixtures with a cap refusal then success, and with a permanent cap, produce the expected surfaces and attempt counts.",
+  "files": ["src/payee/room-grab.ts"],
+  "public_test": "test/units/u-payee-06.public.test.ts",
+  "max_lines": 160,
+  "depends_on": ["u-venue-03"]
+}

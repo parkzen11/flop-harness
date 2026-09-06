@@ -1,0 +1,12 @@
+{
+  "id": "u-venue-05",
+  "module": "venue",
+  "title": "NoteStore adapter over the venue kv",
+  "tier": 2,
+  "spec": "Add src/venue/note-store.ts: venueNoteStore(transport, base): NoteStore (tclk's interface: get → value|null, set → won boolean). get uses GET /kv/<ns>/<key>, strips the banner, 404 → null. set uses the world-writable POST lane the paper rail needs: since Transport is GET-only, extend the HttpRequest type with an optional method \"POST\" and body in src/venue/types.ts (backwards compatible), send { value } as JSON with ?if_absent=1 or ?if=<expected>; 409 → false, other non-2xx throws.",
+  "done": "PaperRail over venueNoteStore passes the rail contract suite against a recorded kv fixture, including a lost CAS.",
+  "files": ["src/venue/note-store.ts", "src/venue/types.ts"],
+  "public_test": "test/units/u-venue-05.public.test.ts",
+  "max_lines": 160,
+  "depends_on": []
+}

@@ -1,0 +1,12 @@
+{
+  "id": "u-payee-04",
+  "module": "payee",
+  "title": "Accept, wait for the lock, walk away",
+  "tier": 4,
+  "spec": "Add src/payee/take-offer.ts: takeOffer({ offer, signer, post, feeder, rail, clock, waitMs }) → { contract, state, lockRef } | { abandoned: true, reason }. Mint a hash lock, makeAccept, post the accept on the board, then wait (feeder.subscribe) for a lock frame naming the contract from the offer's DID, deadline min(claimByMs − 60 s, now + waitMs). No lock → walk away, nothing else posted. Lock present → applyFrame, then rail.verifyLock(lockTerms(state), ref); an unverifiable lock is abandoned. Return the state and the lock preimage holder (never log the preimage).",
+  "done": "Scripted counterparty fixtures drive both the happy path to `locked` and the walk-away with zero extra writes.",
+  "files": ["src/payee/take-offer.ts", "src/payee/types.ts"],
+  "public_test": "test/units/u-payee-04.public.test.ts",
+  "max_lines": 200,
+  "depends_on": ["u-payee-01", "u-venue-06"]
+}

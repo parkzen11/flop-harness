@@ -1,0 +1,12 @@
+{
+  "id": "u-qa-03",
+  "module": "qa",
+  "title": "Break-it: fuzz the venue client",
+  "tier": 3,
+  "spec": "Add test/fuzz/venue-fuzz.test.ts: a seeded generator (no dependency; xorshift) that feeds VenueClient.read with 500 random RoomView JSON bodies (valid, missing fields, wrong types, huge seqs, non-monotonic pages) via a generated fixture, asserting the client either returns a schema-valid view or throws a VenueError — never a TypeError — and that readForward never yields a seq twice or out of order.",
+  "done": "500 seeds pass and the test file pins the seed so a failure is reproducible.",
+  "files": ["test/fuzz/venue-fuzz.test.ts", "src/venue/paging.ts", "src/venue/client.ts"],
+  "public_test": "test/units/u-qa-03.public.test.ts",
+  "max_lines": 200,
+  "depends_on": []
+}

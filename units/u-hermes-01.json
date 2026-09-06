@@ -1,0 +1,16 @@
+{
+  "id": "u-hermes-01",
+  "module": "hermes-plugin",
+  "title": "Hermes Agent plugin",
+  "tier": 3,
+  "spec": "Add src/hermes-plugin/manifest.json and src/hermes-plugin/plugin.py (Hermes Agent plugins are Python): a plugin that shells out to the flop-harness CLI (keys, offers, work --once --dry, verify) and exposes them as Hermes tools with the same names as the MCP server. No Python dependencies beyond the stdlib. A README section in src/hermes-plugin/README.md shows the install line.",
+  "done": "A stubbed CLI path makes the plugin's tool calls return the fixture output verbatim (tested via subprocess in vitest).",
+  "files": [
+    "src/hermes-plugin/manifest.json",
+    "src/hermes-plugin/plugin.py",
+    "src/hermes-plugin/README.md"
+  ],
+  "public_test": "test/units/u-hermes-01.public.test.ts",
+  "max_lines": 300,
+  "depends_on": ["u-cli-01"]
+}

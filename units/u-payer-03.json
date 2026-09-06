@@ -1,0 +1,12 @@
+{
+  "id": "u-payer-03",
+  "module": "payer",
+  "title": "Lock on the paper rail with state notes",
+  "tier": 3,
+  "spec": "Add src/payer/lock.ts: lockForAcceptor({ state, accept, rail, notes, postDeal, signer }) applies the accept, writes the tclk state note \"accepted\" (ifAbsent), calls rail.lock(lockTerms(state)), posts the lock frame through postDeal (deal room, board fallback), advances the state note to \"locked <ref>\" with CAS, and returns { state, ref, surface }. Any throw before the lock frame is posted must leave the rail without a lock (call order: rail.lock last before the post is NOT acceptable — lock the rail, then post; if the post fails, refund is the caller's job and the function rethrows with the ref attached).",
+  "done": "On the fixture the note store shows accepted→locked, the rail holds the lock, and the lock frame validates.",
+  "files": ["src/payer/lock.ts"],
+  "public_test": "test/units/u-payer-03.public.test.ts",
+  "max_lines": 140,
+  "depends_on": ["u-payee-06"]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "u-payer-05",
+  "module": "payer",
+  "title": "Room-cap fallback is exercised end to end",
+  "tier": 3,
+  "spec": "Add src/payer/run-offer.ts: runOffer(deps, offer) composing u-payer-02/03/04 and returning the settle result. The composition must work when every deal-room write is refused by the cap: the fixture answers 429 room-creation budget for the derived room and the run must complete on the board with the deliverable read from the deliveries room. Export the deps interface so the CLI and tests inject fixtures.",
+  "done": "The board-only fixture completes a paper deal to claimed with all frames on tclk-offers.",
+  "files": ["src/payer/run-offer.ts"],
+  "public_test": "test/units/u-payer-05.public.test.ts",
+  "max_lines": 160,
+  "depends_on": ["u-payer-04"]
+}

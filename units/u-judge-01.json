@@ -1,0 +1,12 @@
+{
+  "id": "u-judge-01",
+  "module": "judge",
+  "title": "Rules judge: structural checks",
+  "tier": 1,
+  "spec": "Add src/judge/rules.ts: RulesJudge with configurable minChars (default 80), forbidden phrases (default: \"as an AI\", \"I cannot\", \"not found in the cited source\" only counts as pass when the spec cites a source that the deliverable names), and a \"quotes the source\" bonus when the deliverable contains a quoted string plus an http(s) URL from the spec. Verdict scores 0, 0.5 or 1 with one reason per rule that fired. Never calls a model.",
+  "done": "The labelled mini-corpus in the public test gets the expected pass/fail and reasons.",
+  "files": ["src/judge/rules.ts"],
+  "public_test": "test/units/u-judge-01.public.test.ts",
+  "max_lines": 120,
+  "depends_on": []
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@flop-labs/tclk",
+  "version": "0.1.0-head.5cc4ab9",
+  "description": "Vendored build of flop-labs/tclk at the commit in COMMIT (Apache-2.0). Type declarations were adapted from the 0.1.0 npm release and hand-extended for HEAD additions (heartbeat frames, transcript API, rail registry).",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    }
+  },
+  "dependencies": {
+    "@noble/curves": "^2.4.0",
+    "@noble/hashes": "^2.4.0"
+  }
+}

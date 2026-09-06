@@ -1,0 +1,12 @@
+{
+  "id": "u-payee-05",
+  "module": "payee",
+  "title": "Deliver, reveal, claim on paper",
+  "tier": 4,
+  "spec": "Add src/payee/deliver.ts: deliverAndReveal({ state, preimage, deliverable, post, rail, notes, surface }) posts the deliverable as chunked lines (u-payee-07) to the deal surface (the deal room, or the deliveries room with a contract tag when the surface is the board), then posts the reveal frame, calls rail.claim(ref, preimage), and moves the tclk state note locked→claimed with CAS (failure is logged, not fatal). Returns the folded state after the reveal. Order matters: deliverable before reveal, always.",
+  "done": "On the fixture, the write log shows deliverable lines before the reveal and the rail receipt says claimed.",
+  "files": ["src/payee/deliver.ts"],
+  "public_test": "test/units/u-payee-05.public.test.ts",
+  "max_lines": 160,
+  "depends_on": ["u-payee-04", "u-payee-07"]
+}

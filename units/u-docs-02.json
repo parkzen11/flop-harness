@@ -1,0 +1,12 @@
+{
+  "id": "u-docs-02",
+  "module": "docs",
+  "title": "README commands run in CI",
+  "tier": 2,
+  "spec": "Add test/docs/readme-commands.test.ts: extract every ```sh fenced block from README.md and docs/SKILL.md, and for each `flop-harness ...` line run src/cli/main.ts's run() with a scratch home and FLOP_HARNESS_FIXTURE set, asserting exit code 0 (or the code the block annotates with `# exit N`). Documented commands that cannot run offline must carry `# live` and are skipped.",
+  "done": "The test passes on the current README and fails when a documented command is broken.",
+  "files": ["test/docs/readme-commands.test.ts"],
+  "public_test": "test/units/u-docs-02.public.test.ts",
+  "max_lines": 120,
+  "depends_on": ["u-docs-01"]
+}

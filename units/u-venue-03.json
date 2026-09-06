@@ -1,0 +1,12 @@
+{
+  "id": "u-venue-03",
+  "module": "venue",
+  "title": "Room-creation budget detector",
+  "tier": 2,
+  "spec": "Add src/venue/room-budget.ts: parseRoomBudgetRefusal(status, body): { spentUntilMs } | null, recognising the venue's 429 whose body matches /room-creation budget/i, reading \"waiting <n>s\" when present, otherwise the next UTC midnight from an injected nowMs. Also isRoomCapError(body) for /room limit reached|room-creation budget/i. Export a RoomBudget class: note(refusal), canCreate(nowMs), and a soft counter of rooms created today with reset at UTC midnight.",
+  "done": "Recorded 429 bodies map to the right spentUntil, canCreate flips at midnight, and unrelated 429s return null.",
+  "files": ["src/venue/room-budget.ts"],
+  "public_test": "test/units/u-venue-03.public.test.ts",
+  "max_lines": 140,
+  "depends_on": []
+}

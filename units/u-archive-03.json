@@ -1,0 +1,12 @@
+{
+  "id": "u-archive-03",
+  "module": "archive",
+  "title": "Refold consumer",
+  "tier": 4,
+  "spec": "Add src/archive/refold.ts: refold(portfolio, fetchExport) → { agree: boolean, deals: { contract, published, refolded, agree }[] } re-running the fold on the exports the manifest names (digest-checked) and comparing status/counterparty/amount with what the publisher claims. A digest mismatch or a missing export is a disagreement, not an error. This is the auditor's 10 percent refold.",
+  "done": "A faithful portfolio refolds to agree=true; a tampered status or export flips exactly that deal to agree=false.",
+  "files": ["src/archive/refold.ts"],
+  "public_test": "test/units/u-archive-03.public.test.ts",
+  "max_lines": 200,
+  "depends_on": ["u-archive-02"]
+}

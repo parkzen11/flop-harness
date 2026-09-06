@@ -1,0 +1,12 @@
+{
+  "id": "u-cli-05",
+  "module": "cli",
+  "title": "refold command",
+  "tier": 3,
+  "spec": "Add src/cli/commands/refold.ts: `flop-harness refold <portfolio.json|url> [--exports dir]` running the archive refold and printing one line per deal (contract, published, refolded, agree) and a final AGREE/DISAGREE with exit code 0/1. Wire into main.ts.",
+  "done": "Refolding the fixture portfolio prints the pinned lines and exit codes.",
+  "files": ["src/cli/commands/refold.ts", "src/cli/main.ts"],
+  "public_test": "test/units/u-cli-05.public.test.ts",
+  "max_lines": 100,
+  "depends_on": ["u-archive-03"]
+}

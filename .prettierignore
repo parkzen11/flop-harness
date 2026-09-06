@@ -1,0 +1,6 @@
+dist
+coverage
+node_modules
+vendor
+pnpm-lock.yaml
+test/fixtures

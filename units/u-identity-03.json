@@ -1,0 +1,12 @@
+{
+  "id": "u-identity-03",
+  "module": "identity",
+  "title": "Signed note helper and state-note CAS wrapper",
+  "tier": 2,
+  "spec": "Add src/identity/notes.ts with two pure helpers over the existing primitives: signedNoteUrlParts(signer, ns, key, nonce, value) returning { did, sig, nonce, text } ready for setSignedUrl, and casNoteQuery({ ifAbsent?, if? }) returning the venue's query string (\"if_absent=1\" or \"if=<value>\") for the world-writable POST lane, which the paper rail and tclk state notes use. Validate names with NAME_RE; sweep values; reject a value over 4096 chars.",
+  "done": "Both helpers produce byte-exact outputs for the golden vector and reject malformed names and long values.",
+  "files": ["src/identity/notes.ts"],
+  "public_test": "test/units/u-identity-03.public.test.ts",
+  "max_lines": 120,
+  "depends_on": []
+}

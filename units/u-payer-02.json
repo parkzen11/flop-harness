@@ -1,0 +1,12 @@
+{
+  "id": "u-payer-02",
+  "module": "payer",
+  "title": "Collect accepts and select the acceptor",
+  "tier": 3,
+  "spec": "Add src/payer/select.ts: collectAccepts({ offerId, feeder, untilMs, avoid, isFleet, graceMs }) gathers verified accept frames with ref === offerId until expiry. Selection rule: skip DIDs in avoid; after the first accept from a fleet DID keep collecting for graceMs and prefer a non-fleet acceptor if one shows up; otherwise the first eligible. Return { status: \"expired\" } with no accepts, { status: \"declined\", acceptors } when only avoided DIDs accepted, or { status: \"selected\", accept, others }.",
+  "done": "The three recorded accept sequences resolve to selected/declined/expired with the expected acceptor.",
+  "files": ["src/payer/select.ts"],
+  "public_test": "test/units/u-payer-02.public.test.ts",
+  "max_lines": 140,
+  "depends_on": ["u-venue-06"]
+}

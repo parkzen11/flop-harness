@@ -1,0 +1,12 @@
+{
+  "id": "u-cli-01",
+  "module": "cli",
+  "title": "offers command",
+  "tier": 2,
+  "spec": "Add src/cli/commands/offers.ts: `flop-harness offers [--all] [--base url] [--limit n]` reads the board (newest window), decodes frames, and prints one line per open payer offer (or every frame with --all) in the donor's format: [seq] ✓/✗ OFFER payer 100 PAPER rails=paper job=proto/id ctx=... exp=HH:MM:SS from=…tail id=<10>. Transport via fetchTransport unless io.env.FLOP_HARNESS_FIXTURE names a JSONL replay file. Wire into main.ts.",
+  "done": "Against the fixture the command prints the pinned snapshot.",
+  "files": ["src/cli/commands/offers.ts", "src/cli/main.ts"],
+  "public_test": "test/units/u-cli-01.public.test.ts",
+  "max_lines": 120,
+  "depends_on": ["u-payee-01"]
+}

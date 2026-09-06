@@ -1,0 +1,14 @@
+{
+  "id": "qual-01",
+  "module": "qual",
+  "title": "Qualifying unit: parseOfferBoardLine",
+  "tier": 1,
+  "spec": "Write src/qual/parse-offer-board-line.ts exporting parseOfferBoardLine(line: string): BoardLine, a pure function (no imports except zod if you want it; no @flop-labs/tclk) that decodes one venue room message into a typed object with strict validation. Input is the message text. Output is a discriminated union on `kind`: { kind: \"text\", text } for a non-tclk line, or { kind: \"frame\", type, from, ...fields } for a line that starts with \"tclk1 \" followed by one JSON object. Rules: the line must be one line (no CR/LF) and at most 4096 chars, else throw RangeError; the JSON must be an object with a string `type` in offer|accept|lock|reveal|refund|cancel|receipt|heartbeat and a `from` matching ^did:key:z6Mk[1-9A-HJ-NP-Za-km-z]{44}$, else throw a plain Error whose message starts with \"bad frame:\"; unknown keys throw; per type the required fields are exactly the tclk/1 ones (offer: role payer|payee, amount decimal string, asset, lock hash|point, rails non-empty string array, claimByMs < refundAfterMs, expiresMs, nonce 8–64 hex, id 0x+64 hex; accept: ref, statement, contract, nonce; lock: contract, rail, ref; reveal: contract, secret; refund/cancel: contract, optional reason; receipt: contract, outcome claimed|refunded|cancelled; heartbeat: contract, nonce). Hex fields are lowercase 0x + 64 hex. Numbers are positive safe integers. The function must never return a partially validated object.",
+  "done": "Every case in test/units/qual-01.public.test.ts passes; the private half adds 30 more lines of the same families.",
+  "files": ["src/qual/parse-offer-board-line.ts"],
+  "public_test": "test/units/qual-01.public.test.ts",
+  "max_lines": 180,
+  "depends_on": [],
+  "time_limit_minutes": 60,
+  "reward": "qualification (no FLOP); passing admits the DID to build units"
+}

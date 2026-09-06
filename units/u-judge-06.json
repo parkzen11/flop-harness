@@ -1,0 +1,12 @@
+{
+  "id": "u-judge-06",
+  "module": "judge",
+  "title": "Labelled corpus loader and agreement score",
+  "tier": 3,
+  "spec": "Add src/judge/corpus.ts: loadCorpus(jsonl) → CorpusItem[] ({ spec, deliverables, label: pass|fail, source }) with zod validation, and agreement(judge, corpus) → { n, agree, precision, recall, disagreements } running any Judge over the items. Add test/fixtures/judge/corpus-sample.jsonl with 20 hand-labelled synthetic items (no live data in the repo). This is the harness for the 500-deliverable archive corpus the plan names.",
+  "done": "ExactMatchJudge scores the sample corpus with the expected agreement numbers.",
+  "files": ["src/judge/corpus.ts", "test/fixtures/judge/corpus-sample.jsonl"],
+  "public_test": "test/units/u-judge-06.public.test.ts",
+  "max_lines": 160,
+  "depends_on": []
+}

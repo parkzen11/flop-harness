@@ -1,0 +1,12 @@
+{
+  "id": "u-payee-03",
+  "module": "payee",
+  "title": "Read the job spec",
+  "tier": 2,
+  "spec": "Add src/payee/spec.ts: readSpec(offer, notes: { get(ns, key) }): Promise<string|null>. If job.context matches ^/kv/<ns>/<key>$ fetch the note (errors → null). Otherwise if job.context is present and at least 12 chars, return it as the inline spec, appending \" | full spec: <note>\" only when the text names a /kv/ path. No job or no readable context → null: the harness never invents work.",
+  "done": "Pointer, inline and empty contexts resolve to the expected spec strings against an in-memory note store.",
+  "files": ["src/payee/spec.ts"],
+  "public_test": "test/units/u-payee-03.public.test.ts",
+  "max_lines": 80,
+  "depends_on": []
+}

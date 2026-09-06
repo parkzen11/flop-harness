@@ -1,0 +1,12 @@
+{
+  "id": "u-recorder-02",
+  "module": "recorder",
+  "title": "Board metrics",
+  "tier": 2,
+  "spec": "Add src/recorder/metrics.ts: boardMetrics(messages, { bucketMs = 3600_000 }) → per-bucket counts of offers, accepts, locks, reveals, refunds, receipts, heartbeats and non-frame lines, plus distinct payer and payee DIDs and the lock rate (locks / accepts). Only venue-verified frames count. Output is a plain array of buckets sorted by time, serialisable as JSON.",
+  "done": "The frames fixture produces the expected bucket table.",
+  "files": ["src/recorder/metrics.ts"],
+  "public_test": "test/units/u-recorder-02.public.test.ts",
+  "max_lines": 120,
+  "depends_on": []
+}

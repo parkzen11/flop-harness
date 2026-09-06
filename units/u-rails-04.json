@@ -1,0 +1,12 @@
+{
+  "id": "u-rails-04",
+  "module": "rails",
+  "title": "x402 rail (gated on upstream)",
+  "tier": 5,
+  "spec": "Replace the X402Rail stub with a real rail: lock = create a payment intent held by an x402 facilitator on Base under the contract id, verifyLock = facilitator says held with matching amount/asset/payee, claim = settle with the preimage, refund = release after refundAfterMs. Facilitator HTTP through an injected transport. Not offered until a facilitator that can hold funds under a hash lock exists.",
+  "done": "X402Rail passes railContractSuite against a recorded facilitator fixture.",
+  "files": ["src/rails/x402.ts"],
+  "public_test": "test/units/u-rails-04.public.test.ts",
+  "max_lines": 300,
+  "depends_on": []
+}

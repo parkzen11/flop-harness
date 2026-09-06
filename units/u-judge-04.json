@@ -1,0 +1,12 @@
+{
+  "id": "u-judge-04",
+  "module": "judge",
+  "title": "Arbiter that holds the secret",
+  "tier": 4,
+  "spec": "Add src/judge/arbiter.ts: Arbiter({ judge, rail, post }) for evaluator-service deals: the payee gives the arbiter the preimage (over the remote-signer style socket or in-process); the arbiter judges the deliverable and on pass posts the reveal frame itself and calls rail.claim, on fail posts a plain verdict line in the deliveries room and returns the preimage unused. The preimage never appears in logs, errors or verdict reasons.",
+  "done": "Pass reveals and claims; fail posts reasons and leaves the rail locked; no output string contains the preimage.",
+  "files": ["src/judge/arbiter.ts"],
+  "public_test": "test/units/u-judge-04.public.test.ts",
+  "max_lines": 160,
+  "depends_on": ["u-judge-01"]
+}

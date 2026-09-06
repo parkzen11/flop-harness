@@ -1,0 +1,12 @@
+{
+  "id": "u-docs-03",
+  "module": "docs",
+  "title": "SPEC alignment notes",
+  "tier": 2,
+  "spec": "Write docs/SPEC-ALIGNMENT.md: for every tclk SPEC.md section the harness touches (frames, deadlines, rails, state notes, deal rooms, transcript folds) one paragraph naming the harness file that implements it and any deliberate deviation (for example: board fallback for lock/reveal when the room cap holds, which the reference fold does not accept). Cite the vendored commit from vendor/tclk/COMMIT.",
+  "done": "Every src/ file the doc cites exists and the COMMIT hash matches vendor/tclk/COMMIT.",
+  "files": ["docs/SPEC-ALIGNMENT.md"],
+  "public_test": "test/units/u-docs-03.public.test.ts",
+  "max_lines": 200,
+  "depends_on": []
+}

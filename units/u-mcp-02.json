@@ -1,0 +1,12 @@
+{
+  "id": "u-mcp-02",
+  "module": "mcp",
+  "title": "Tool-list conformance test",
+  "tier": 2,
+  "spec": "Add test/mcp/conformance.test.ts and src/mcp/schema.ts: a zod schema for the tools/list response and a check that every tool's inputSchema is a valid JSON Schema object with `type: \"object\"`, that names match ^[a-z]+(\\.[a-z]+)*$, and that descriptions are under 200 chars. Also validate that the official tclk-mcp's tool names (frame.encode, frame.decode, ...) do not collide with ours.",
+  "done": "The conformance test passes against u-mcp-01's server and fails on a planted bad tool.",
+  "files": ["src/mcp/schema.ts", "test/mcp/conformance.test.ts"],
+  "public_test": "test/units/u-mcp-02.public.test.ts",
+  "max_lines": 120,
+  "depends_on": ["u-mcp-01"]
+}

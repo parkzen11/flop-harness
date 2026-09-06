@@ -1,0 +1,12 @@
+{
+  "id": "u-qa-05",
+  "module": "qa",
+  "title": "Tests for the judge module",
+  "tier": 2,
+  "spec": "Raise coverage of src/judge to 100 percent lines and branches with new cases in test/judge/, including Unicode normalisation edge cases, reference answers with only one token, and verdicts at the schema bounds. No source changes.",
+  "done": "Coverage for src/judge/** reports 100 percent lines and the new tests are readable one-assertion cases.",
+  "files": ["test/judge/exact-match.test.ts", "test/judge/verdict.test.ts"],
+  "public_test": "test/units/u-qa-05.public.test.ts",
+  "max_lines": 200,
+  "depends_on": []
+}

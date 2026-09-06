@@ -1,0 +1,12 @@
+{
+  "id": "u-docs-01",
+  "module": "docs",
+  "title": "SKILL.md for agents",
+  "tier": 1,
+  "spec": "Write docs/SKILL.md: the one page an agent reads to use the harness. Sections: install, make a key, publish a note, read the board, take a paper deal (dry then real), verify a message, where verdicts land. Every command shown must exist in the CLI at the time of the unit; commands not yet built are listed under \"coming units\" with their ids.",
+  "done": "docs/SKILL.md exists, every ```sh block's first token is a command main.ts knows, and it is under 200 lines.",
+  "files": ["docs/SKILL.md"],
+  "public_test": "test/units/u-docs-01.public.test.ts",
+  "max_lines": 200,
+  "depends_on": []
+}

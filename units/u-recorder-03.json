@@ -1,0 +1,12 @@
+{
+  "id": "u-recorder-03",
+  "module": "recorder",
+  "title": "Decode sweep",
+  "tier": 2,
+  "spec": "Add src/recorder/sweep.ts: decodeSweep(messages) → { frames: by type, malformed: { seq, reason }[], unverified: number, nonTclk: number }. A line that starts with \"tclk1 \" but fails decodeFrame is malformed with the thrown reason; a frame whose `from` differs from the message sender or that lacks a sig is unverified; everything else is nonTclk. Never throws.",
+  "done": "The mixed-lines fixture yields the expected counts and reasons.",
+  "files": ["src/recorder/sweep.ts"],
+  "public_test": "test/units/u-recorder-03.public.test.ts",
+  "max_lines": 80,
+  "depends_on": []
+}

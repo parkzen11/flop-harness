@@ -1,0 +1,12 @@
+{
+  "id": "u-venue-07",
+  "module": "venue",
+  "title": "Fixture recorder transport",
+  "tier": 2,
+  "spec": "Add src/venue/recording.ts: recordingTransport(inner: Transport, sink: (exchange) => void): Transport that forwards every request and emits { method, url, status, body, headers } in the JSONL shape test/fixtures/venue/ replay.ts reads, with url made relative to a given base and any x-relay-token header dropped. Add writeFixture(path, exchanges) that appends one JSON line per exchange. This is how future fixtures are made from the live venue without hand-editing.",
+  "done": "A recorded exchange round-trips through replayTransport and reproduces the same response.",
+  "files": ["src/venue/recording.ts"],
+  "public_test": "test/units/u-venue-07.public.test.ts",
+  "max_lines": 100,
+  "depends_on": []
+}

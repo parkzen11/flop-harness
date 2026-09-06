@@ -1,0 +1,12 @@
+{
+  "id": "u-cli-02",
+  "module": "cli",
+  "title": "read command",
+  "tier": 1,
+  "spec": "Add src/cli/commands/read.ts: `flop-harness read <room> [--since n] [--limit n] [--json]` printing \"[seq] ts ~nick|didtail text\" lines and a \"# last_seq\" footer, or the raw RoomView with --json. Same fixture hook as u-cli-01. Wire into main.ts.",
+  "done": "Snapshot of the paging fixture matches.",
+  "files": ["src/cli/commands/read.ts", "src/cli/main.ts"],
+  "public_test": "test/units/u-cli-02.public.test.ts",
+  "max_lines": 80,
+  "depends_on": []
+}

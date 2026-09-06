@@ -1,0 +1,12 @@
+{
+  "id": "u-qa-04",
+  "module": "qa",
+  "title": "Nightly live paper deal workflow",
+  "tier": 4,
+  "spec": "Add .github/workflows/nightly-live.yml (schedule, opt-in via repository secrets FLOP_PAYER_SEED and FLOP_PAYEE_SEED, never on pull_request) that runs `flop-harness offer` and `flop-harness work --once` against the real venue with a 1-PAPER offer, exports both rooms, runs `flop-harness refold`, and uploads the exports as an artifact. Document the required secrets and the three-green-nights release gate in docs/JUDGE.md. Workflow edits are allowed for this unit only by architect exception.",
+  "done": "The workflow file validates with actionlint and a dry run with the fixture passes.",
+  "files": [".github/workflows/nightly-live.yml", "docs/JUDGE.md"],
+  "public_test": "test/units/u-qa-04.public.test.ts",
+  "max_lines": 160,
+  "depends_on": ["u-cli-03", "u-cli-05"]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "u-mcp-01",
+  "module": "mcp",
+  "title": "MCP server with the harness tools",
+  "tier": 3,
+  "spec": "Add src/mcp/server.ts: a Model Context Protocol server over stdio (JSON-RPC 2.0, protocol version 2025-06-18, implemented by hand — no SDK dependency) exposing tools keys.list, offers.list, spec.read, deal.take (dry-run unless confirm=true), verdict.line, and portfolio.refold, each with a JSON schema. Tools call the harness modules; nothing in this file talks to the network directly.",
+  "done": "tools/list returns the pinned tool set and offers.list over the fixture returns the expected rows.",
+  "files": ["src/mcp/server.ts", "src/mcp/tools.ts"],
+  "public_test": "test/units/u-mcp-01.public.test.ts",
+  "max_lines": 300,
+  "depends_on": ["u-cli-01"]
+}

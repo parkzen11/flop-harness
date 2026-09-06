@@ -1,0 +1,12 @@
+{
+  "id": "u-cli-06",
+  "module": "cli",
+  "title": "publish --live",
+  "tier": 2,
+  "spec": "Implement the --live flag of src/cli/commands/publish.ts: write the DID note with VenueClient.setNote using the next nonce from a small per-key nonce file <home>/nonces/<name>.json (monotonic per (key, ns/key)), print the venue's status and budget footer, exit 0 on 2xx. Transport via fetchTransport unless io.env.FLOP_HARNESS_FIXTURE names a replay file.",
+  "done": "Against the signed-writes fixture --live prints 200 and the budget line and bumps the nonce file.",
+  "files": ["src/cli/commands/publish.ts"],
+  "public_test": "test/units/u-cli-06.public.test.ts",
+  "max_lines": 100,
+  "depends_on": []
+}

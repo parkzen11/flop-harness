@@ -1,0 +1,12 @@
+{
+  "id": "u-cli-03",
+  "module": "cli",
+  "title": "work command",
+  "tier": 3,
+  "spec": "Add src/cli/commands/work.ts: `flop-harness work <key> [--once] [--dry] [--min-amount n] [--only prefix] [--deliverable-file f]` composing the payee modules: scan the board, filter open offers, takeOffer, produce the deliverable (file, or an injected worker function; no model call in this unit), deliverAndReveal. --dry prints what it would accept. Wire into main.ts.",
+  "done": "With the fixture and --deliverable-file the command completes one paper deal and prints claimed.",
+  "files": ["src/cli/commands/work.ts", "src/cli/main.ts"],
+  "public_test": "test/units/u-cli-03.public.test.ts",
+  "max_lines": 200,
+  "depends_on": ["u-payee-05"]
+}

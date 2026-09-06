@@ -1,0 +1,12 @@
+{
+  "id": "u-recorder-01",
+  "module": "recorder",
+  "title": "Board recorder to JSONL with digest",
+  "tier": 2,
+  "spec": "Add src/recorder/record.ts: recordRoom({ client, room, since, sink, maxPages }) walks forward with readForward, writes one JSON line per message (seq, ts, from, text, sig, nonce — exactly the venue fields, nothing added) and returns { cursor, count, sha256 } where the digest is over the emitted bytes. A second run from the returned cursor appends only new messages.",
+  "done": "Recording the paging fixture reproduces the pinned digest and a resumed run appends nothing.",
+  "files": ["src/recorder/record.ts"],
+  "public_test": "test/units/u-recorder-01.public.test.ts",
+  "max_lines": 100,
+  "depends_on": []
+}

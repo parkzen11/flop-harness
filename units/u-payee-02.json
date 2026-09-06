@@ -1,0 +1,12 @@
+{
+  "id": "u-payee-02",
+  "module": "payee",
+  "title": "Payer ranking",
+  "tier": 3,
+  "spec": "Add src/payee/rank.ts: PayerBook that learns from decoded board frames (learn(frames)): which DIDs ever locked, how many offers each posted, accept→lock latencies per payer, and which offers were locked for someone (accept.contract → offer id via lock.contract). Expose isFunded(did), isDead(did) (two of our accepts left unlocked, or ≥15 offers with no lock and not funded), waitFor(did) (median latency ×2, clamped 5–30 min; default 3 min for unknown outside payers), and rank(offers) ordering funded lockers first, then by amount. Losing a race (offer locked for someone else) must never count as a stiffing. Seedable from a JSON { funded, dead, rank } object.",
+  "done": "Given the ranking fixture, rank() orders and waitFor() clamps exactly as the expected table says.",
+  "files": ["src/payee/rank.ts"],
+  "public_test": "test/units/u-payee-02.public.test.ts",
+  "max_lines": 240,
+  "depends_on": []
+}

@@ -1,0 +1,52 @@
+{
+  "rfc8032": {
+    "seed": "9d61b19deffd5a60ba844af492ec2cc44449c5697b326919703bac031cae7f60",
+    "did": "did:key:z6MktwupdmLXVVqTzCw4i46r4uGyosGXRnR3XjN4Zq7oMMsw",
+    "message": {
+      "room": "tclk-offers",
+      "nonce": "7",
+      "text": "hello\tworld​ ",
+      "swept": "hello world",
+      "canonical": "tclk-offers|7|hello world",
+      "sig": "_ssa2SMJNpH_Lq8G8HuE_CywtSLviFvsBq2iI8EsK5gVfZ3KZuO35Cy_ES-4lwibqbCzxt_PujBx_xvecPGwBw",
+      "verifies": true
+    },
+    "noteAddress": {
+      "ns": "did-06",
+      "key": "58808e85cc8317"
+    },
+    "note": {
+      "ns": "did-ab",
+      "key": "0123456789abcd",
+      "nonce": "3",
+      "value": "x",
+      "canonical": "did-ab|0123456789abcd|3|x",
+      "sig": "DZ_3EQP2WHyKgVF8M04zJnJKCcNjLnMBIdBUD4krzICckS6vQhhc9NGogVqFWNY-dDktxZB7gn0Rri7GkQ-FAg"
+    }
+  },
+  "ones": {
+    "seed": "1111111111111111111111111111111111111111111111111111111111111111",
+    "did": "did:key:z6MktULudTtAsAhRegYPiZ6631RV3viv12qd4GQF8z1xB22S",
+    "message": {
+      "room": "tclk-offers",
+      "nonce": "7",
+      "text": "hello\tworld​ ",
+      "swept": "hello world",
+      "canonical": "tclk-offers|7|hello world",
+      "sig": "GFgml6r71AwKmsn0W8PK9qemqFXTv329dcyOHpab_b9xgr0oI_aWDCDWr21cRVNP9b0PRF7nC6bY7FYYdOj3DA",
+      "verifies": true
+    },
+    "noteAddress": {
+      "ns": "did-d4",
+      "key": "1be86df874313a"
+    },
+    "note": {
+      "ns": "did-ab",
+      "key": "0123456789abcd",
+      "nonce": "3",
+      "value": "x",
+      "canonical": "did-ab|0123456789abcd|3|x",
+      "sig": "hnNigj8hcLM51mSRdjJA7DypEBam9JWSh2gTyyKpzX8b1HebuxyY4TUqGr7w5Ux5HGyzRn7-JQfWh8QfR_rsDg"
+    }
+  }
+}

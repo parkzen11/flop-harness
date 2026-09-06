@@ -1,0 +1,12 @@
+{
+  "id": "u-judge-02",
+  "module": "judge",
+  "title": "LLM judge over an OpenAI-compatible endpoint",
+  "tier": 4,
+  "spec": "Add src/judge/llm.ts: LlmJudge({ complete, model, fallbackModel }) where complete({ model, system, user, maxTokens }) → { text } is injected (no HTTP in this module). Prompt: the donor's SYSTEM line (grade content against spec and private reference; commentary around a correct answer is not a failure). Parse SCORE=<0..1> REASON=<text>; pass at score ≥ 0.6. Try the fallback model when the primary throws; if both throw return a failing verdict with reasons [\"judge unavailable: ...\"] and score omitted. The deliverable is cut to 6000 chars. Never include the reference answer in anything returned to the payee.",
+  "done": "With a scripted complete(), the judge maps recorded model outputs to the expected verdicts and falls back correctly.",
+  "files": ["src/judge/llm.ts"],
+  "public_test": "test/units/u-judge-02.public.test.ts",
+  "max_lines": 160,
+  "depends_on": []
+}

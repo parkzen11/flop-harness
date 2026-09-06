@@ -1,0 +1,12 @@
+{
+  "id": "u-rails-03",
+  "module": "rails",
+  "title": "flop-htlc rail (gated on upstream)",
+  "tier": 5,
+  "spec": "Replace the FlopHtlcRail stub with a real rail once flop-labs ships the FLOP-network HTLC. lock builds and submits the HTLC under LockTerms, verifyLock checks the chain state matches the terms exactly, claim submits the preimage, refund submits after the timelock, receipt reads chain state. All chain I/O through an injected RPC interface so the contract suite runs against a fake. THIS UNIT IS NOT OFFERED until the upstream rail exists; it is listed so the interface has a home.",
+  "done": "FlopHtlcRail passes railContractSuite against a scripted RPC fake and every submitted call is byte-pinned.",
+  "files": ["src/rails/flop-htlc.ts"],
+  "public_test": "test/units/u-rails-03.public.test.ts",
+  "max_lines": 300,
+  "depends_on": []
+}

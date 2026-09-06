@@ -1,0 +1,12 @@
+{
+  "id": "u-identity-01",
+  "module": "identity",
+  "title": "Keyfile encryption at rest",
+  "tier": 3,
+  "spec": "Encrypt the seed in <home>/keys/<name>.json when a passphrase is given. Add src/identity/keyfile-crypto.ts exporting sealSeed(seed: Uint8Array, passphrase: string): SealedSeed and openSeed(sealed: SealedSeed, passphrase: string): Uint8Array. Derive the key with scrypt (N=2^15, r=8, p=1, from @noble/hashes/scrypt.js) and a fresh 16-byte salt; encrypt with xchacha20poly1305 from @noble/ciphers is NOT allowed (no new dependencies) — use @noble/hashes hmac-sha256 as a stream keystream XOR plus an HMAC tag over (salt|nonce|ciphertext), constant-time compare. SealedSeed = { v: 1, kdf: \"scrypt\", salt: hex, nonce: hex, ct: hex, tag: hex }. Wrong passphrase or tampered ciphertext throws before returning any bytes. Wire it into keystore.ts behind an optional passphrase parameter; plaintext files keep working.",
+  "done": "openSeed(sealSeed(s, p), p) equals s, and every tampered field or wrong passphrase throws.",
+  "files": ["src/identity/keyfile-crypto.ts", "src/cli/keystore.ts"],
+  "public_test": "test/units/u-identity-01.public.test.ts",
+  "max_lines": 260,
+  "depends_on": []
+}

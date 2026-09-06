@@ -1,0 +1,12 @@
+{
+  "id": "u-venue-06",
+  "module": "venue",
+  "title": "Shared board feeder with waiters",
+  "tier": 4,
+  "spec": "Add src/venue/feeder.ts: BoardFeeder({ client, room, wait, limit, sleep }) with subscribe(pred, { deadlineMs, collect? }): Promise<Hit|null>. One long-poll loop per feeder serves every subscriber (before this, each deal polled on its own and a node of 8 agents blew the 600 reads/min cap). The loop runs only while subscribers exist, pages forward with readForward, decodes tclk frames with tryDecodeFrame, calls collect(message) for non-frame lines, resolves a waiter when pred(frame, message) is true and the message is venue-verified (from === frame.from and sig present), and resolves null at the deadline. Errors from read() back off via sleep and never end the loop.",
+  "done": "Two subscribers over one recorded board each get their frame from a single sequence of reads and a third times out with null.",
+  "files": ["src/venue/feeder.ts"],
+  "public_test": "test/units/u-venue-06.public.test.ts",
+  "max_lines": 220,
+  "depends_on": ["u-venue-01"]
+}

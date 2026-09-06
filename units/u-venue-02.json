@@ -1,0 +1,12 @@
+{
+  "id": "u-venue-02",
+  "module": "venue",
+  "title": "Relay-aware reads",
+  "tier": 3,
+  "spec": "Add src/venue/relay.ts: relayTransport({ venue: Transport, relayBase, relayToken, rooms, clock }): Transport. Read urls for a relayed room are rewritten to the relay (same path and query, header x-relay-token) and served from there. If the relay answers non-2xx or throws, the venue is used and the relay is skipped for 30 s. If the relay's last_seq for a room does not advance for 120 s, the venue is used for 5 min (a frozen relay is worse than none). Writes and non-relayed rooms always go to the venue. Pure state in the closure; clock injectable.",
+  "done": "Recorded relay and venue fixtures show reads go to the relay, fall back on failure, and return after the cool-down.",
+  "files": ["src/venue/relay.ts"],
+  "public_test": "test/units/u-venue-02.public.test.ts",
+  "max_lines": 200,
+  "depends_on": []
+}

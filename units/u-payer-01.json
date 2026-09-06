@@ -1,0 +1,12 @@
+{
+  "id": "u-payer-01",
+  "module": "payer",
+  "title": "Offer builder with inline spec",
+  "tier": 3,
+  "spec": "Add src/payer/offer.ts: buildOffer({ signer, amount, asset = \"PAPER\", rails = [\"paper\"], spec, taskId, claimMin = 30, refundMin = 60, expireMin = 10, nowMs }) → { offer, specNote: { ns, key, value } }. The spec note lives at ns tclk-job-<last 2 chars of taskId, non-alnum → 0>, key = taskId stripped to [a-z0-9_-] and cut to 14. job = { proto: \"flop-harness\", id: taskId, context: <spec cut to 300 chars> + \" | full spec: /kv/<ns>/<key>\" } because the biggest outside worker cluster reads job.context as the task itself. Use makeOffer for the frame.",
+  "done": "For the fixture inputs the offer validates with tclk and the context and note address equal the expected strings.",
+  "files": ["src/payer/offer.ts", "src/payer/types.ts"],
+  "public_test": "test/units/u-payer-01.public.test.ts",
+  "max_lines": 120,
+  "depends_on": []
+}

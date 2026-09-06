@@ -1,0 +1,12 @@
+{
+  "id": "u-archive-02",
+  "module": "archive",
+  "title": "Publisher: fold exports into a portfolio",
+  "tier": 3,
+  "spec": "Add src/archive/publish.ts: buildPortfolio({ did, exports: { room, jsonl }[] }) → Portfolio. For every contract the DID took part in: parseTranscriptExport, foldTranscript, and record the folded status, counterparty, amount, asset, rail and the export digests. Contracts whose fold rejects the handshake are listed under `unfolded` with the reason, never silently dropped.",
+  "done": "The two-room fixture folds into the expected portfolio JSON byte for byte.",
+  "files": ["src/archive/publish.ts"],
+  "public_test": "test/units/u-archive-02.public.test.ts",
+  "max_lines": 200,
+  "depends_on": ["u-archive-01"]
+}

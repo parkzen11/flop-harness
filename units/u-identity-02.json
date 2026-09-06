@@ -1,0 +1,12 @@
+{
+  "id": "u-identity-02",
+  "module": "identity",
+  "title": "Remote signer over a unix socket",
+  "tier": 4,
+  "spec": "A signer that lives in another process so the venue client never holds a seed. Add src/identity/remote-signer.ts: serveSigner(signer: Signer, socketPath: string): Promise<{ close(): Promise<void> }> and connectSigner(socketPath, expectedDid): Promise<Signer>. Protocol: newline-delimited JSON, request { id, canonical }, reply { id, sig } or { id, error }. The server signs anything for its one DID; the client checks the reply's signature verifies against expectedDid before returning it. Node net only, no dependencies. Socket file mode 0600.",
+  "done": "A message signed through connectSigner verifies against the served DID and the client refuses a server with the wrong DID.",
+  "files": ["src/identity/remote-signer.ts"],
+  "public_test": "test/units/u-identity-02.public.test.ts",
+  "max_lines": 300,
+  "depends_on": []
+}

@@ -1,0 +1,12 @@
+{
+  "id": "u-judge-03",
+  "module": "judge",
+  "title": "Sandbox judge: apply, test, lint, size",
+  "tier": 5,
+  "spec": "Add src/judge/sandbox.ts: judgePatch({ repoDir, unit, patch, exec, clock }) → Verdict. Steps, each a reason on failure: refuse paths outside unit.files or under .github/, package.json, pnpm-lock.yaml, vendor/, test/ (public tests are not patchable); git apply --3way --check then apply; run pnpm lint, pnpm typecheck, pnpm test (coverage json-summary read back for the lines %); count changed lines with git diff --numstat (≤ unit.max_lines). exec is injected ({ cmd, args, cwd, timeoutMs }) → { code, stdout, stderr }) so the unit test never spawns. Wall clock cap 15 min. Nothing here touches the network or reads keys.",
+  "done": "With a scripted exec, a good patch passes with coverage and changed_lines filled and each bad patch fails with the matching reason.",
+  "files": ["src/judge/sandbox.ts"],
+  "public_test": "test/units/u-judge-03.public.test.ts",
+  "max_lines": 300,
+  "depends_on": []
+}

@@ -1,0 +1,12 @@
+{
+  "id": "u-archive-04",
+  "module": "archive",
+  "title": "Contribution ledger in the archive shape",
+  "tier": 2,
+  "spec": "Add src/archive/ledger.ts: a Ledger schema { v: \"flop-harness-ledger/1\", units: { unit_id, contract, did, counterparty, tier, flop, merged_commit, reviewed_by, revoked?: reason }[] } with parseLedger, appendUnit (rejects a duplicate contract), totals(byDid) and a digest. Publisher-operated identities are counted, not named differently.",
+  "done": "The sample ledger parses, duplicate contracts are refused, and totals match the hand-computed table.",
+  "files": ["src/archive/ledger.ts"],
+  "public_test": "test/units/u-archive-04.public.test.ts",
+  "max_lines": 120,
+  "depends_on": ["u-archive-01"]
+}

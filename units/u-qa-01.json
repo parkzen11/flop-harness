@@ -1,0 +1,12 @@
+{
+  "id": "u-qa-01",
+  "module": "qa",
+  "title": "Mutation testing baseline",
+  "tier": 2,
+  "spec": "Add stryker.config.json for @stryker-mutator/core with the vitest runner over src/identity and src/venue, a `pnpm mutate` script, and docs/QA.md recording the baseline mutation score. Dev dependency additions are allowed for this unit only (the judge rule for package.json is lifted by the architect for u-qa-01; see units/README.md).",
+  "done": "`pnpm mutate` runs and the recorded score is ≥ 70 for identity.",
+  "files": ["stryker.config.json", "package.json", "docs/QA.md"],
+  "public_test": "test/units/u-qa-01.public.test.ts",
+  "max_lines": 120,
+  "depends_on": []
+}

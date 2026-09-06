@@ -1,0 +1,12 @@
+{
+  "id": "u-venue-04",
+  "module": "venue",
+  "title": "Room export to transcript records",
+  "tier": 2,
+  "spec": "Add exportRoom(room) to VenueClient in src/venue/export.ts as a standalone function exportRoom(transport, base, room): Promise<{ text, generation, records }>: GET /r/<room>/export, keep the byte-exact JSONL text, read the x-room-generation header, and parse with @flop-labs/tclk parseTranscriptExport. A non-2xx throws BadResponseError. Do not modify client.ts.",
+  "done": "The recorded export parses into transcript records whose lines equal the JSONL text and the generation header is returned.",
+  "files": ["src/venue/export.ts"],
+  "public_test": "test/units/u-venue-04.public.test.ts",
+  "max_lines": 100,
+  "depends_on": []
+}

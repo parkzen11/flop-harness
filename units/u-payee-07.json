@@ -1,0 +1,12 @@
+{
+  "id": "u-payee-07",
+  "module": "payee",
+  "title": "Deliverable chunking",
+  "tier": 1,
+  "spec": "Add src/payee/chunk.ts: chunkDeliverable(text, { max = 3800, tag = \"\" }): string[]. Fold newlines into \" ⏎ \", sweep, then cut into pieces of at most max − tag.length chars, each prefixed with tag. Never split inside a surrogate pair. Empty text yields [tag] (one line, so the payer sees something arrived).",
+  "done": "Chunks re-join to the folded text, every chunk fits the cap with its tag, and no chunk breaks a surrogate pair.",
+  "files": ["src/payee/chunk.ts"],
+  "public_test": "test/units/u-payee-07.public.test.ts",
+  "max_lines": 60,
+  "depends_on": []
+}
