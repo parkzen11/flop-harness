@@ -88,6 +88,10 @@ if [ "$CHANGED" -gt "$MAX_LINES" ]; then fail "changed $CHANGED lines; the unit 
 pnpm install --frozen-lockfile > install.log 2>&1 || { fail "pnpm install failed (lockfile drift?)"; finish; }
 pnpm lint > lint.log 2>&1 || fail "lint: $(grep -E 'error|✖' lint.log | head -5 | tr '\n' ' ' | head -c 400)"
 pnpm typecheck > typecheck.log 2>&1 || fail "typecheck: $(grep -E 'error TS' typecheck.log | head -5 | tr '\n' ' ' | head -c 400)"
+# private half of the acceptance test, held back by the program and revealed with this run
+if [ -n "${PRIVATE_TEST_B64:-}" ]; then
+  if printf '%s' "$PRIVATE_TEST_B64" | base64 -d > "test/units/$UNIT_ID.private.test.ts" 2>/dev/null; then echo "private test in place"; else fail "private_test_b64 is not valid base64"; fi
+fi
 pnpm test > test.log 2>&1 || fail "tests: $(grep -E 'FAIL|✗|×|Error' test.log | head -5 | tr '\n' ' ' | head -c 400)"
 if [ -f coverage/coverage-summary.json ]; then
   COVERAGE="$(jq '.total.lines.pct' coverage/coverage-summary.json)"

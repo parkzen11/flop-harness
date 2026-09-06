@@ -14,6 +14,23 @@ on:
         description: "Unified diff against main, base64"
         required: true
         type: string
+      run_tag:
+        description: "Caller's tag (unit + contract), shown in the run name"
+        required: false
+        type: string
+        default: ""
+      base_sha:
+        description: "Commit the patch was written against (default: main)"
+        required: false
+        type: string
+        default: ""
+      private_test_b64:
+        description: "Private half of the acceptance test (vitest file), base64; revealed with this run"
+        required: false
+        type: string
+        default: ""
+
+run-name: "judge ${{ inputs.unit_id }} ${{ inputs.run_tag }}"
 
 permissions:
   contents: read
@@ -28,10 +45,11 @@ jobs:
     env:
       UNIT_ID: ${{ inputs.unit_id }}
       PATCH_B64: ${{ inputs.patch_b64 }}
+      PRIVATE_TEST_B64: ${{ inputs.private_test_b64 }}
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ inputs.base_sha || 'main' }}
           persist-credentials: false
       - uses: pnpm/action-setup@v4
         with:
@@ -46,7 +64,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: verdict-${{ inputs.unit_id }}-${{ github.run_id }}
+          name: verdict
           path: verdict.json
           if-no-files-found: error
       - name: Fail the run when the verdict is fail
